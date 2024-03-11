@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {useDispatch} from 'react-redux'
-import { addTodo } from '../../slices/todoSlice' 
+import { addProduct } from '../../slices/productSlice' 
 
 function Dashboard() {
 
@@ -9,7 +9,7 @@ function Dashboard() {
 
     const addTodoHandler = (e) => {
         e.preventDefault()
-        dispatch(addTodo(input))
+        dispatch(addProduct(input))
         setInput('')
     }
 

@@ -1,9 +1,9 @@
 import {configureStore, combineReducers} from '@reduxjs/toolkit';
-import todoReducer from './slices/todoSlice';
+import productReducer from './slices/productSlice';
 import orderReducer from './slices/orderSlice'
 
 const rootReducer = combineReducers({
-    todoReducer,
+    productReducer,
     orderReducer,
 });
 export const store = configureStore({
