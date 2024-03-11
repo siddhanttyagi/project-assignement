@@ -1,7 +1,7 @@
 import {createSlice, nanoid } from '@reduxjs/toolkit';
-
+import { product_list } from './initialProductData';
 const initialState = {
-    products: [{id: 1, text: "Hello world"}]
+    products: product_list
 }
 
 

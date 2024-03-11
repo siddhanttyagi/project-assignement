@@ -15,7 +15,7 @@ function ProductManagement() {
             className="mt-4 flex justify-between items-center bg-zinc-800 px-4 py-2 rounded"
             key={product.id}
           >
-            <div className='text-white'>{product.text}</div>
+            <div className='text-white'>{product.title}</div>
             <button
              onClick={() => dispatch(removeProduct(product.id))}
               className="text-white bg-red-500 border-0 py-1 px-4 focus:outline-none hover:bg-red-600 rounded text-md"
