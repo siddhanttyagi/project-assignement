@@ -14,6 +14,8 @@ function Dashboard() {
         <div className='text-indigo-400 underline text-3xl mt-5 font-serif'>TOTAL NUMBERS OF ORDERS🎉🎉</div>
         <p className='text-4xl text-yellow-500 mt-3 font-bold'>{orders.length}</p>
       </div>
+      <hr className="my-4 border-t-1 border-gray-400 widt" />
+      
     </>
   )
 }
