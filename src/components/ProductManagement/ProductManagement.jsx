@@ -1,32 +1,64 @@
-import React from 'react'
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { removeProduct } from "../../slices/productSlice";
+import  { useState } from 'react';
+import Popup from './Popup';
+function ProductManagement() {
+  const products = useSelector((state) => state.productReducer.products);
+  const dispatch = useDispatch();
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [popupObject, setPopupObject] = useState({});
+  const openPopup = (product) => {
+    setIsPopupOpen(true);
+    setPopupObject(product);
+  };
 
-export default function ProductManagement() {
+  const closePopup = () => {
+    setIsPopupOpen(false);
+    setPopupObject({});
+  };
   return (
-      <div className="py-16 bg-white">
-          <div className="container m-auto px-6 text-gray-600 md:px-12 xl:px-6">
-              <div className="space-y-6 md:space-y-0 md:flex md:gap-6 lg:items-center lg:gap-12">
-                  <div className="md:5/12 lg:w-5/12">
-                      <img
-                          src="https://tailus.io/sources/blocks/left-image/preview/images/startup.png"
-                          alt="image"
-                      />
-                  </div>
-                  <div className="md:7/12 lg:w-6/12">
-                      <h2 className="text-2xl text-gray-900 font-bold md:text-4xl">
-                          React development is carried out by passionate developers
-                      </h2>
-                      <p className="mt-6 text-gray-600">
-                          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum omnis voluptatem
-                          accusantium nemo perspiciatis delectus atque autem! Voluptatum tenetur beatae unde
-                          aperiam, repellat expedita consequatur! Officiis id consequatur atque doloremque!
-                      </p>
-                      <p className="mt-4 text-gray-600">
-                          Nobis minus voluptatibus pariatur dignissimos libero quaerat iure expedita at?
-                          Asperiores nemo possimus nesciunt dicta veniam aspernatur quam mollitia.
-                      </p>
-                  </div>
-              </div>
-          </div>
+    <>
+      <div className="text-3xl underline my-3 text-indigo-400 font-serif">
+        PRODUCT LIST
       </div>
+      <div className="flex flex-col items-center justify-center min-h-screen bg-slate700 text-black">
+        
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {products.map((product) => (
+            <div
+              key={product.id}
+              className="max-w-sm rounded overflow-hidden shadow-lg bg-slate-500 p-10 pb-20  relative md:pb-40"
+            >
+              <div className="aspect-w-1 aspect-h-1 overflow-hidden rounded-lg shadow-lg">
+                <img
+                  className="w-100 h-60 object-cover"
+                  src={product.thumbnail}
+                  alt={product.title}
+                />
+              </div>
+              <div className="px-6 py-4">
+                <div className="font-bold text-3xl mb-2">{product.title}</div>
+                <p className="text-blue text-base">{product.description}</p>
+              </div>
+              <div className="px-6 pt-4 pb-2 absolute bottom-1">
+                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-black mr-2 mb-2">
+                  Price: ${product.price}
+                </span>
+                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-black mr-2 mb-2">
+                  Discount: {product.discountPercentage}%
+                </span>
+                <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-1 px-2 rounded text-1xl" onClick={() =>{openPopup(product)}}>
+                  EDIT PRODUCT
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      {isPopupOpen && <Popup onClose={closePopup} popupObject={popupObject} />}
+    </>
   );
 }
+
+export default ProductManagement;
