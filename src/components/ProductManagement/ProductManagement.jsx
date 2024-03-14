@@ -1,11 +1,22 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeProduct } from "../../slices/productSlice";
-
+import  { useState } from 'react';
+import Popup from './Popup';
 function ProductManagement() {
   const products = useSelector((state) => state.productReducer.products);
   const dispatch = useDispatch();
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [popupObject, setPopupObject] = useState({});
+  const openPopup = (product) => {
+    setIsPopupOpen(true);
+    setPopupObject(product);
+  };
 
+  const closePopup = () => {
+    setIsPopupOpen(false);
+    setPopupObject({});
+  };
   return (
     <>
       <div className="text-3xl underline my-3 text-indigo-400 font-serif">
@@ -37,7 +48,7 @@ function ProductManagement() {
                 <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-black mr-2 mb-2">
                   Discount: {product.discountPercentage}%
                 </span>
-                <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-1 px-2 rounded text-1xl">
+                <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-1 px-2 rounded text-1xl" onClick={() =>{openPopup(product)}}>
                   EDIT PRODUCT
                 </button>
               </div>
@@ -45,6 +56,7 @@ function ProductManagement() {
           ))}
         </div>
       </div>
+      {isPopupOpen && <Popup onClose={closePopup} popupObject={popupObject} />}
     </>
   );
 }
