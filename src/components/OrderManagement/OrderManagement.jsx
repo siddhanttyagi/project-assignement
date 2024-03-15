@@ -1,142 +1,95 @@
-import React from 'react'
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { removeOrder } from "../../slices/orderSlice";
 
 export default function OrderManagement() {
-    return (
-        <div className="relative flex items-top justify-center min-h-[700px] bg-white sm:items-center sm:pt-0">
-            <div className="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <div className="mt-8 overflow-hidden">
-                    <div className="grid grid-cols-1 md:grid-cols-2">
-                        <div className="p-6 mr-2 bg-gray-100 sm:rounded-lg">
-                            <h1 className="text-3xl sm:text-4xl text-gray-800 font-extrabold tracking-tight">
-                                Get in touch: 
-                            </h1>
-                            <p className="text-normal text-lg sm:text-xl font-medium text-gray-600 mt-2">
-                                Fill in the form to start a conversation
-                            </p>
-
-                            <div className="flex items-center mt-8 text-gray-600">
-                                <svg
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="1.5"
-                                    viewBox="0 0 24 24"
-                                    className="w-8 h-8 text-gray-500"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="1.5"
-                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                                    />
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="1.5"
-                                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                                    />
-                                </svg>
-                                <div className="ml-4 text-md tracking-wide font-semibold w-40">
-                                    Acme Inc, Street, State, Postal Code
-                                </div>
-                            </div>
-
-                            <div className="flex items-center mt-4 text-gray-600">
-                                <svg
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="1.5"
-                                    viewBox="0 0 24 24"
-                                    className="w-8 h-8 text-gray-500"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="1.5"
-                                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                                    />
-                                </svg>
-                                <div className="ml-4 text-md tracking-wide font-semibold w-40">
-                                    +44 1234567890
-                                </div>
-                            </div>
-
-                            <div className="flex items-center mt-2 text-gray-600">
-                                <svg
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="1.5"
-                                    viewBox="0 0 24 24"
-                                    className="w-8 h-8 text-gray-500"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="1.5"
-                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                                    />
-                                </svg>
-                                <div className="ml-4 text-md tracking-wide font-semibold w-40">
-                                    info@acme.org
-                                </div>
-                            </div>
-                        </div>
-
-                        <form className="p-6 flex flex-col justify-center">
-                            <div className="flex flex-col">
-                                <label for="name" className="hidden">
-                                    Full Name
-                                </label>
-                                <input
-                                    type="name"
-                                    name="name"
-                                    id="name"
-                                    placeholder="Full Name"
-                                    className="w-100 mt-2 py-3 px-3 rounded-lg bg-white border border-gray-400 text-gray-800 font-semibold focus:border-orange-500 focus:outline-none"
-                                />
-                            </div>
-
-                            <div className="flex flex-col mt-2">
-                                <label for="email" className="hidden">
-                                    Email
-                                </label>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    id="email"
-                                    placeholder="Email"
-                                    className="w-100 mt-2 py-3 px-3 rounded-lg bg-white border border-gray-400 text-gray-800 font-semibold focus:border-orange-500 focus:outline-none"
-                                />
-                            </div>
-
-                            <div className="flex flex-col mt-2">
-                                <label for="tel" className="hidden">
-                                    Number
-                                </label>
-                                <input
-                                    type="tel"
-                                    name="tel"
-                                    id="tel"
-                                    placeholder="Telephone Number"
-                                    className="w-100 mt-2 py-3 px-3 rounded-lg bg-white border border-gray-400 text-gray-800 font-semibold focus:border-orange-500 focus:outline-none"
-                                />
-                            </div>
-
-                            <button
-                                type="submit"
-                                className="md:w-32 bg-orange-700 hover:bg-blue-dark text-white font-bold py-3 px-6 rounded-lg mt-3 hover:bg-orange-600 transition ease-in-out duration-300"
-                            >
-                                Submit
-                            </button>
-                        </form>
-                    </div>
+  const orders = useSelector((state) => state.orderReducer.orders);
+  const dispatch = useDispatch();
+  return (
+    <>
+      <div className="text-3xl underline my-3 text-indigo-400 font-serif">
+        ORDER LIST
+      </div>
+      <div className="flex flex-col items-center justify-center min-h-screen bg-slate700 text-black">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {orders.map((product) => (
+            <div
+              key={product.id}
+              className="max-w-sm rounded overflow-hidden shadow-lg bg-slate-500 p-10 pb-20  relative md:pb-40"
+            >
+              <div className="aspect-w-1 aspect-h-1 overflow-hidden rounded-lg shadow-lg">
+                <img
+                  className="w-100 h-60 object-cover"
+                  src={product.thumbnail}
+                  alt={product.title}
+                />
+              </div>
+              <div className="px-6 py-4">
+                <div className="flex justify-around">
+                  <div className="font-bold text-3xl mb-2">{product.title}</div>
+                  <div className="font-bold text-3xl mb-2">
+                    {" "}
+                    <button
+                      onClick={() => dispatch(removeOrder(product.id))}
+                      className="text-white bg-red-500 border-0 py-1 px-4 focus:outline-none hover:bg-red-600 rounded text-md "
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-6 h-6"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                        />
+                      </svg>
+                    </button>
+                  </div>
                 </div>
+                <p className="text-blue text-base font-semibold">
+                  {" "}
+                  ORDER ID: {product.order_id}
+                </p>
+                <p className="text-blue text-base font-semibold">
+                  {" "}
+                  ORDER Date: {product.order_date}
+                </p>
+                <p className="text-blue text-base font-semibold">
+                  {" "}
+                  Customer Name:{" "}
+                  <span className="underline">{product.customer_name}</span>
+                </p>
+              </div>
+
+              <div className="px-6 pt-4 pb-2 absolute bottom-1">
+                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-black mr-2 mb-2">
+                  Price: ${product.price}
+                </span>
+                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-black mr-2 mb-2">
+                  Discount: {product.discountPercentage}%
+                </span>
+                <button
+                  className={`font-bold py-1 px-2 rounded text-1xl ${
+                    product.status === "Delivered"
+                      ? "bg-green-400 hover:bg-green-500 text-black"
+                      : product.status === "Shipped"
+                      ? "bg-yellow-400 hover:bg-yellow-500 text-black"
+                      : product.status === "Cancelled"
+                      ? "bg-red-400 hover:bg-red-500 text-black"
+                      : ""
+                  }`}
+                >
+                  {product.status}
+                </button>
+              </div>
             </div>
+          ))}
         </div>
-    );
+      </div>
+    </>
+  );
 }
