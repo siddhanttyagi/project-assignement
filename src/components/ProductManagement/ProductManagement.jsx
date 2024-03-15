@@ -2,11 +2,13 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeProduct } from "../../slices/productSlice";
 import { useState } from "react";
+import AddProduct from "./AddProduct";
 import Popup from "./Popup";
 function ProductManagement() {
   const products = useSelector((state) => state.productReducer.products);
   const dispatch = useDispatch();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [addButton, setAddButton] = useState(false);
   const [popupObject, setPopupObject] = useState({});
   const openPopup = (product) => {
     setIsPopupOpen(true);
@@ -17,11 +19,19 @@ function ProductManagement() {
     setIsPopupOpen(false);
     setPopupObject({});
   };
+  const closeButton = () => {
+    setAddButton(false);
+    
+  };
   return (
     <>
       <div className="text-3xl underline my-3 text-indigo-400 font-serif">
         PRODUCT LIST
       </div>
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-4" onClick={() => {setAddButton(true)}}>
+        ADD NEW PRODUCT
+      </button>
+
       <div className="flex flex-col items-center justify-center min-h-screen bg-slate700 text-black">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {products.map((product) => (
@@ -86,6 +96,7 @@ function ProductManagement() {
         </div>
       </div>
       {isPopupOpen && <Popup onClose={closePopup} popupObject={popupObject} />}
+      {addButton && <AddProduct onClose={closeButton} />}
     </>
   );
 }
