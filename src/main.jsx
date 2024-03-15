@@ -7,8 +7,7 @@ import Layout from './Layout.jsx'
 import Dashboard from './components/Dashboard/Dashboard.jsx'
 import ProductManagement from './components/ProductManagement/ProductManagement.jsx'
 import OrderManagement from './components/OrderManagement/OrderManagement.jsx'
-import User from './components/User/User.jsx'
-import Github, { githubInfoLoader } from './components/Github/Github.jsx'
+
 import { Provider } from 'react-redux'
 import { store } from './Store.jsx'
 
@@ -39,7 +38,7 @@ const router = createBrowserRouter(
       <Route path='' element={<Dashboard />} />
       <Route path='product-management' element={<ProductManagement />} />
       <Route path='order-management' element={<OrderManagement />} />
-      <Route path='user/:userid' element={<User />} />
+      
       
     </Route>
   )
