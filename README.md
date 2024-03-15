@@ -3,4 +3,4 @@ after you download all the dependencies, you need to  run the command "npm run d
 and there  you go . Now, you can access my website on localhost:5173.
 
 
-My website is fully responsive , you can run it on any device. i put best effort in making the project hope you like it.
+My website is fully responsive , you can run it on any device. i put my best effort in making this project, hope you like it.😊
