@@ -1,8 +1,6 @@
-# React + Vite
+Hy, i have created my website using react and i used third party libraries . so to install all of them you need to run the command "npm i" it will download all the dependencies.
+after you download all the dependencies, you need to  run the command "npm run dev"
+and there  you go . Now, you can access my website on localhost:5173.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+My website is fully responsive , you can run it on any device. i put best effort in making the project hope you like it.
