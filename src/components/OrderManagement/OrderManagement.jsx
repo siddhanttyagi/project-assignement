@@ -81,7 +81,7 @@ export default function OrderManagement() {
                       : product.status === "Cancelled"
                       ? "bg-red-400 hover:bg-red-500 text-black"
                       : ""
-                  }`}
+                  } cursor-default`}
                 >
                   {product.status}
                 </button>
